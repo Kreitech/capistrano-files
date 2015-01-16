@@ -1,4 +1,4 @@
-require 'capistrano'
+#require 'capistrano'
 
-require File.expand_path("#{File.dirname(__FILE__)}/capistrano-files/files")
+#require File.expand_path("#{File.dirname(__FILE__)}/capistrano-files/files")
 

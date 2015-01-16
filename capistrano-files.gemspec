@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'capistrano-files/version'
+require 'capistrano/files/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "capistrano-files"
-  spec.version       = CapistranoFiles::VERSION
+  spec.version       = Capistrano::Files::VERSION
   spec.authors       = ["Martin Fernandez"]
   spec.email         = ["me@bilby91.com"]
   spec.summary       = %q{Capistrano tasks for files handling.}
