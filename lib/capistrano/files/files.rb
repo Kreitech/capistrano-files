@@ -34,7 +34,7 @@ namespace :files do
   desc 'Symlink files using set :file_symlinks'
   task :symlink do
     on roles(:app) do
-      symlinks = fetch(:file_symlinks)
+      symlinks = fetch(:file_symlinks) || []
 
       symlinks.each do |s|
         symlink(s[:source],s[:link])
@@ -47,7 +47,7 @@ namespace :files do
   desc 'Uploads and prompts confirmation with diff'
   task :upload do
     on roles(:app) do
-      files = fetch(:file_uploads)
+      files = fetch(:file_uploads) || []
 
       files.each do |file_metadata|
         destination_path = remote_path(file_metadata[:destination])
