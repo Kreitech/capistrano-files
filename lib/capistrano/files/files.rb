@@ -31,6 +31,20 @@ end
 
 namespace :files do
 
+  desc 'Create all the shared_folders'
+  task :create_shared_folders do
+    on roles(:app) do
+      folders = fetch(:shared_folders) || []
+
+      folders.each { |f|
+        path = "#{shared_path}/#{f}"
+
+        execute "mkdir -p #{path}" unless test("[ -f #{path} ]")
+      }
+    end
+  end
+  after 'deploy:check:directories', 'files:create_shared_folders'
+
   desc 'Symlink files using set :file_symlinks'
   task :symlink do
     on roles(:app) do
@@ -41,7 +55,6 @@ namespace :files do
       end
     end
   end
-
   after 'deploy:symlink:release', 'files:symlink'
 
   desc 'Uploads and prompts confirmation with diff'
